@@ -26,3 +26,5 @@ Route::post('/profilep', 'CvController@profilep')->name('profilep');
 Route::post('/educationp', 'CvController@educationp')->name('educationp');
 
 Route::post('/experiencep', 'CvController@experiencep')->name('experiencep');
+
+Route::get('/cv', 'CvController@cv')->name('cv');

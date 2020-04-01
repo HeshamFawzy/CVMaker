@@ -91,8 +91,34 @@ class CvController extends Controller
             "tw"		=> $request['tw'],			
         );
         $request->session()->put('work', $arrData[0]);
-        $info = $request->session()->get('work');
+        return redirect()->route('cv');
+    }
 
-        return view('cv');
+    public function cv()
+    {
+        $image = session()->get('image');
+
+        $name = session()->get('name');
+        $job = session()->get('job');
+        $date = session()->get('date');
+        $address = session()->get('address');
+        $mobile = session()->get('mobile');
+        $email = session()->get('email');
+        $linkedin = session()->get('linkedin');
+
+        $profile = session()->get('profile');
+
+        $school = session()->get('school');
+        $fschool = session()->get('fschool');
+        $tschool =  session()->get('tschool');
+        $collage =  session()->get('collage');
+        $fcollage =  session()->get('fcollage');
+        $tcollage  =  session()->get('tcollage');
+
+        $work  =  session()->get('work');
+
+        dd($image);
+
+        return view('cv')->with(['image', 'name' , 'job' , 'date' , 'address' , 'mobile' , 'email' , 'linkedin' , 'profile' , 'school' , 'fschool' , 'tschool' , 'collage' , 'fcollage' , 'tcollage' , 'work'] , [$image,$name,$job,$date,$address,$mobile,$email,$linkedin,$profile,$school,$fschool,$tschool,$collage,$fcollage,$tcollage,$work]);
     }
 }
