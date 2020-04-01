@@ -40,13 +40,13 @@ class CvController extends Controller
             'email' => 'required',
             'linkedin' => 'required',
         ]);
-        $request->session()->put('name', $request->file('name'));
-        $request->session()->put('job', $request->file('job'));
-        $request->session()->put('date', $request->file('date'));
-        $request->session()->put('address', $request->file('address'));
-        $request->session()->put('mobile', $request->file('mobile'));
-        $request->session()->put('email', $request->file('email'));
-        $request->session()->put('linkedin', $request->file('linkedin'));
+        $request->session()->put('name', $request->input('name'));
+        $request->session()->put('job', $request->input('job'));
+        $request->session()->put('date', $request->input('date'));
+        $request->session()->put('address', $request->input('address'));
+        $request->session()->put('mobile', $request->input('mobile'));
+        $request->session()->put('email', $request->input('email'));
+        $request->session()->put('linkedin', $request->input('linkedin'));
         
         return view('profile');
     }
@@ -56,7 +56,7 @@ class CvController extends Controller
         $validatedData = $request->validate([
             'profile' => 'required',
         ]);
-        $request->session()->put('profile', $request->file('profile'));
+        $request->session()->put('profile', $request->input('profile'));
         
         return view('education');
     }
@@ -71,25 +71,28 @@ class CvController extends Controller
             'fcollage' => 'required',
             'tcollage' => 'required',
         ]);
-        $request->session()->put('school', $request->file('school'));
-        $request->session()->put('fschool', $request->file('fschool'));
-        $request->session()->put('tschool', $request->file('tschool'));
-        $request->session()->put('collage', $request->file('collage'));
-        $request->session()->put('fcollage', $request->file('fcollage'));
-        $request->session()->put('tcollage', $request->file('tcollage'));
+        $request->session()->put('school', $request->input('school'));
+        $request->session()->put('fschool', $request->input('fschool'));
+        $request->session()->put('tschool', $request->input('tschool'));
+        $request->session()->put('collage', $request->input('collage'));
+        $request->session()->put('fcollage', $request->input('fcollage'));
+        $request->session()->put('tcollage', $request->input('tcollage'));
         
         return view('experience');
     }
 
     public function experiencep(Request $request)
     {
-        $validatedData = $request->validate([
-            'school' => 'required',
-            'collage' => 'required',
-        ]);
-        $request->session()->put('school', $request->file('school'));
-        $request->session()->put('collage', $request->file('collage'));
-        
-        return view('experience');
+
+        $arrData[] = array( 
+            "workplace"		=> $request['workplace'], 
+            "role"		=> $request['role'],
+            "fw"		=> $request['fw'],
+            "tw"		=> $request['tw'],			
+        );
+        $request->session()->put('work', $arrData[0]);
+        $info = $request->session()->get('work');
+
+        return view('cv');
     }
 }
