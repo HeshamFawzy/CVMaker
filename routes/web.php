@@ -18,3 +18,11 @@ Route::get('/', function () {
 Route::get('/profilepicture', 'CvController@profilepicture')->name('profilepicture');
 
 Route::post('/profilepicturep', 'CvController@profilepicturep')->name('profilepicturep');
+
+Route::post('/personalinformationp', 'CvController@personalinformationp')->name('personalinformationp');
+
+Route::post('/profilep', 'CvController@profilep')->name('profilep');
+
+Route::post('/educationp', 'CvController@educationp')->name('educationp');
+
+Route::post('/experiencep', 'CvController@experiencep')->name('experiencep');
