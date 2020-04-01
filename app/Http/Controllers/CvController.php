@@ -116,9 +116,26 @@ class CvController extends Controller
         $tcollage  =  session()->get('tcollage');
 
         $work  =  session()->get('work');
+        //dd($image);
 
-        dd($image);
+        $data = [
+            'image' => $image,
+            'name' => $name,
+            'job' => $job,
+            'date' => $date,
+            'address' => $address,
+            'mobile' => $mobile,
+            'email' => $email,
+            'linkedin' => $linkedin,
+            'profile' => $profile,
+            'school' => $school,
+            'fschool' => $fschool,
+            'tschool' =>  $tschool,
+            'collage' =>  $collage ,
+            'fcollage' =>  $fcollage,
+            'tcollage'  =>  $tcollage,
 
-        return view('cv')->with(['image', 'name' , 'job' , 'date' , 'address' , 'mobile' , 'email' , 'linkedin' , 'profile' , 'school' , 'fschool' , 'tschool' , 'collage' , 'fcollage' , 'tcollage' , 'work'] , [$image,$name,$job,$date,$address,$mobile,$email,$linkedin,$profile,$school,$fschool,$tschool,$collage,$fcollage,$tcollage,$work]);
+        ];
+        return view('cv')->with('data' , $data);
     }
 }

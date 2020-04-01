@@ -18,7 +18,7 @@
 <div id="cv" class="instaFade">
 	<div class="mainDetails">
 		<div id="headshot" class="quickFade">
-			<img src="headshot.jpg" alt="Alan Smith" />
+			<img src="{{url('uploads/'.$data['image'])}}" alt="Alan Smith" />
 		</div>
 		
 		<div id="name">
