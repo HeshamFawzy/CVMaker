@@ -84,13 +84,13 @@
 			</div>
 			
 			<div class="sectionContent">
-					@foreach($works['workplace'] as 3)
+	
 						<article>
-							<h2>{{$w}}</h2>
+							<h2></h2>
 							<p class="subDetails">April 2011 - Present</p>
 							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
 						</article>
-					@endforeach
+				
 			</div>
 			<div class="clear"></div>
 		</section>		
