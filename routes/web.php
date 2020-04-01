@@ -17,4 +17,4 @@ Route::get('/', function () {
 
 Route::get('/profilepicture', 'CvController@profilepicture')->name('profilepicture');
 
-Route::get('/profilepicturep', 'CvController@profilepicturep')->name('profilepicturep');
+Route::post('/profilepicturep', 'CvController@profilepicturep')->name('profilepicturep');

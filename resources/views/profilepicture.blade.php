@@ -5,7 +5,7 @@
             <div class="col-md-6 col-lg-9 offset-lg-0">
                 <div class="card shadow">
                     <div class="card-body">
-                        <form method="post" action="" enctype="multipart/form-data">
+                        <form method="post" action="{{ url('profilepicturep')}}" enctype="multipart/form-data">
                             {{ csrf_field() }}
                             <h1 class="text-center">Profile Picture</h1>
                             <div class="form-group">
