@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/profilepicture', 'CvController@profilepicture')->name('profilepicture');
+
+Route::get('/profilepicturep', 'CvController@profilepicturep')->name('profilepicturep');
