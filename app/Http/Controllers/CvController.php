@@ -144,15 +144,17 @@ class CvController extends Controller
 
         $work  =  session()->get('work');
         $html = view('cv')->with('image' , $image)->with('name' , $name)->with('job' , $job)->with('date' , $date)->with('address' , $address)->with('mobile' , $mobile)->with('email' , $email)->with('linkedin' , $linkedin)->with('profile' , $profile)->with('school' , $school)->with('fschool' , $fschool)->with('tschool' , $tschool)->with('collage', $collage)->with('fcollage' , $fcollage)->with('tcollage' , $tcollage)->with('works', $work)->render();
+
         $client = new Client([
-            'verify' => 'C:\xampp\php\extras\ssl\cacert.pem']);
+            'verify' => 'C:\xampp\php\extras\ssl\cacert.pem', 'base']);
         $postData = array(
             'html' => $html,
-	        'apiKey' => 'f229e04748138cab760f64b8edb0c774bd2c79207f5d85eb9776c75549b08838'
+            'apiKey' => 'f229e04748138cab760f64b8edb0c774bd2c79207f5d85eb9776c75549b08838',
+            'email' => 'HeshamFawzy2772@gmail.com'
         );
-    	$response = $client->request('GET', 'https://api.html2pdf.app/v1/generate', ['query' => $postData]);
+    	$response = $client->request('GET', 'https://www.html2image.net/api/api.php?', ['query' => $postData]);
         $body = $response->getBody()->getContents();
 
-        dd($body);
+       return $body;
     }
 }
