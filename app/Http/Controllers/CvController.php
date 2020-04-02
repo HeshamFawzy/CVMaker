@@ -118,21 +118,39 @@ class CvController extends Controller
         $tcollage  =  session()->get('tcollage');
 
         $work  =  session()->get('work');
-        session()->put('url', url()->current());
         return view('cv')->with('image' , $image)->with('name' , $name)->with('job' , $job)->with('date' , $date)->with('address' , $address)->with('mobile' , $mobile)->with('email' , $email)->with('linkedin' , $linkedin)->with('profile' , $profile)->with('school' , $school)->with('fschool' , $fschool)->with('tschool' , $tschool)->with('collage', $collage)->with('fcollage' , $fcollage)->with('tcollage' , $tcollage)->with('works', $work);
     }
 
     public function download()
     {
+        $image = session()->get('image');
+
+        $name = session()->get('name');
+        $job = session()->get('job');
+        $date = session()->get('date');
+        $address = session()->get('address');
+        $mobile = session()->get('mobile');
+        $email = session()->get('email');
+        $linkedin = session()->get('linkedin');
+
+        $profile = session()->get('profile');
+
+        $school = session()->get('school');
+        $fschool = session()->get('fschool');
+        $tschool =  session()->get('tschool');
+        $collage =  session()->get('collage');
+        $fcollage =  session()->get('fcollage');
+        $tcollage  =  session()->get('tcollage');
+
+        $work  =  session()->get('work');
+        $html = view('cv')->with('image' , $image)->with('name' , $name)->with('job' , $job)->with('date' , $date)->with('address' , $address)->with('mobile' , $mobile)->with('email' , $email)->with('linkedin' , $linkedin)->with('profile' , $profile)->with('school' , $school)->with('fschool' , $fschool)->with('tschool' , $tschool)->with('collage', $collage)->with('fcollage' , $fcollage)->with('tcollage' , $tcollage)->with('works', $work)->render();
         $client = new Client([
-            'verify' => 'C:\xampp\php\extras\ssl\cacert.pem', 
-            'base_uri' => 'https://neutrinoapi.net/html5-render']);
+            'verify' => 'C:\xampp\php\extras\ssl\cacert.pem']);
         $postData = array(
-            "user-id" => "Hesham",
-            "api-key" => "HIaLW3un3hqPznW6FHtEUrkFflTDiDm7T1KB1Tpczm01hayZ",
-            "content" => session()->get('url')
+            'html' => $html,
+	        'apiKey' => 'f229e04748138cab760f64b8edb0c774bd2c79207f5d85eb9776c75549b08838'
         );
-    	$response = $client->request('GET', 'https://neutrinoapi.net/html5-render', ['query' => $postData]);
+    	$response = $client->request('GET', 'https://api.html2pdf.app/v1/generate', ['query' => $postData]);
         $body = $response->getBody()->getContents();
 
         dd($body);
