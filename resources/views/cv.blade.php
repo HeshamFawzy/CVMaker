@@ -99,7 +99,7 @@
 			@endforeach
 			
 			<div class="clear"></div>
-			<button class="btn btn-success" style="float:right">Download</button>
+			<a class="btn btn-success" style="float:right" href="{{ url('download')}}">Download</a>
 		</section>		
 		
 	</div>

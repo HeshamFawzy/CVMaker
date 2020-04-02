@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Storage;
 
 use File;
 
+use GuzzleHttp\Client;
+
 class CvController extends Controller
 {
     public function profilepicture()
@@ -116,12 +118,23 @@ class CvController extends Controller
         $tcollage  =  session()->get('tcollage');
 
         $work  =  session()->get('work');
-
+        session()->put('url', url()->current());
         return view('cv')->with('image' , $image)->with('name' , $name)->with('job' , $job)->with('date' , $date)->with('address' , $address)->with('mobile' , $mobile)->with('email' , $email)->with('linkedin' , $linkedin)->with('profile' , $profile)->with('school' , $school)->with('fschool' , $fschool)->with('tschool' , $tschool)->with('collage', $collage)->with('fcollage' , $fcollage)->with('tcollage' , $tcollage)->with('works', $work);
     }
 
     public function download()
     {
-        
+        $client = new Client([
+            'verify' => 'C:\xampp\php\extras\ssl\cacert.pem', 
+            'base_uri' => 'https://neutrinoapi.net/html5-render']);
+        $postData = array(
+            "user-id" => "Hesham",
+            "api-key" => "HIaLW3un3hqPznW6FHtEUrkFflTDiDm7T1KB1Tpczm01hayZ",
+            "content" => session()->get('url')
+        );
+    	$response = $client->request('GET', 'https://neutrinoapi.net/html5-render', ['query' => $postData]);
+        $body = $response->getBody()->getContents();
+
+        dd($body);
     }
 }
