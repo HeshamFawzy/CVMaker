@@ -119,4 +119,9 @@ class CvController extends Controller
 
         return view('cv')->with('image' , $image)->with('name' , $name)->with('job' , $job)->with('date' , $date)->with('address' , $address)->with('mobile' , $mobile)->with('email' , $email)->with('linkedin' , $linkedin)->with('profile' , $profile)->with('school' , $school)->with('fschool' , $fschool)->with('tschool' , $tschool)->with('collage', $collage)->with('fcollage' , $fcollage)->with('tcollage' , $tcollage)->with('works', $work);
     }
+
+    public function download()
+    {
+        
+    }
 }
