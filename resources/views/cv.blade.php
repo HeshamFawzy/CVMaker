@@ -61,17 +61,17 @@
 				<article>
 				<h2>{{$collage}}</h2>
 				<p class="subDetails">From</p>
-				<p>{{$fcollage}}</p>
+				<p>{{ date('d-M-Y', strtotime($fcollage)) }}</p>
 				<p class="subDetails">To</p>
-				<p>{{$tcollage}}</p>
+				<p>{{ date('d-M-Y', strtotime($tcollage)) }}</p>
 				</article>
 				
 				<article>
 				<h2>{{$school}}</h2>
 				<p class="subDetails">From</p>
-				<p>{{$fschool}}</p>
+				<p>{{ date('d-M-Y', strtotime($fschool)) }}</p>
 				<p class="subDetails">To</p>
-				<p>{{$tschool}}</p>
+				<p>{{ date('d-M-Y', strtotime($tschool)) }}</p>
 				</article>
 			</div>
 			<div class="clear"></div>
@@ -82,16 +82,22 @@
 			<div class="sectionTitle">
 				<h1>Work Experience</h1>
 			</div>
-			
-			<div class="sectionContent">
-	
-						<article>
-							<h2></h2>
-							<p class="subDetails">April 2011 - Present</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ultricies massa et erat luctus hendrerit. Curabitur non consequat enim. Vestibulum bibendum mattis dignissim. Proin id sapien quis libero interdum porttitor.</p>
-						</article>
+			@foreach ((array)$works['workplace'] as $key1 => $item)
+				@foreach ((array)$item as $key2 => $val)
 				
-			</div>
+				<div class="sectionContent">
+					<article>
+					<h2>{{$item}}</h2>
+
+					<p class="subDetails">{{$works['role'][$key1]}}</p>
+					<p>From : {{ date('d-M-Y', strtotime($works['fw'][$key1])) }}</p>
+					<p>To : {{ date('d-M-Y', strtotime($works['tw'][$key1])) }}</p>
+					</article>
+				</div>
+
+				@endforeach
+			@endforeach
+			
 			<div class="clear"></div>
 		</section>		
 		
