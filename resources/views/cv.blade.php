@@ -9,7 +9,7 @@
 
 <link type="text/css" rel="stylesheet" href="{{ asset('./css/style.css')}}">
 <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'>
-
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <!--[if lt IE 9]>
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -99,6 +99,7 @@
 			@endforeach
 			
 			<div class="clear"></div>
+			<button class="btn btn-success" style="float:right">Download</button>
 		</section>		
 		
 	</div>
